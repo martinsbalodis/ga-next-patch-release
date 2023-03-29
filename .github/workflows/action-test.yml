@@ -1,0 +1,24 @@
+name: Run action tests
+
+on: [ push ]
+
+jobs:
+  action-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get next release (Tag found should get next patch version)
+        id: next_release_1
+        uses: martinsbalodis/ga-next-patch-release@master
+        with:
+          base_release: 0.1.0
+
+      - name: Get next release (Tag not found should use base version)
+        id: next_release_2
+        uses: martinsbalodis/ga-next-patch-release@master
+        with:
+          base_release: 100.300.0
+
+      - name: Assert next release
+        run: |
+          [[ ${{ steps.next_release_1.outputs.next_release }} == 0.1.1 ]]
+          [[ ${{ steps.next_release_2.outputs.next_release }} == 100.300.0 ]]
