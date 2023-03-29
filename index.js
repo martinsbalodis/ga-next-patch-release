@@ -8,12 +8,12 @@ async function exec() {
         const baseRelease = core.getInput("base_release", {required: true});
         const githubConfig = {
             owner: github.context.repo.owner,
-            repo: github.context.repo.owner,
+            repo: github.context.repo.repo,
             token: githubToken,
         };
 
         const nextRelease = await new Action(githubConfig, baseRelease).getNextPatchRelease();
-        core.setOutput("next_release", nextRelease);
+        core.setOutput("nextRelease", nextRelease);
     } catch (error) {
         core.setFailed(error);
     }
