@@ -20,5 +20,5 @@ jobs:
 
       - name: Assert next release
         run: |
-          [[ ${{ steps.next_release_1.outputs.next_release }} == 0.1.1 ]]
+          [[ ${{ steps.next_release_1.outputs.next_release }} == 0.1.5 ]]
           [[ ${{ steps.next_release_2.outputs.next_release }} == 100.300.0 ]]

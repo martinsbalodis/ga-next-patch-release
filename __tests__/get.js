@@ -11,5 +11,5 @@ test(`Version found should increase patch version`, async () => {
     const action = new Action({owner: "martinsbalodis", repo: "ga-next-patch-release"}, "0.1.0");
     const version = await action.getNextPatchRelease();
 
-    expect(version).toBe("0.1.1");
+    expect(version).toBe("0.1.5");
 })
