@@ -1,0 +1,18 @@
+name: Find next patch release
+description: Find next patch release from given base release
+inputs:
+  github_token:
+    description: Github token
+    required: true
+  base_release:
+    description: Base release version without prefix. (1.2.0)
+    required: true
+outputs:
+  next_release:
+    description: Tag name without prefix. (1.2.1)
+runs:
+  using: node16
+  main: index.js
+branding:
+  icon: tag
+  color: blue
